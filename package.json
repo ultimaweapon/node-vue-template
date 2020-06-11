@@ -1,0 +1,24 @@
+{
+  "name": "vue-node-template",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "rimraf dist && mkdirp dist/public && node src/client/build.js dist/public && tsc --project src/server --outDir dist",
+    "start": "npm run build && node dist/index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "html-webpack-plugin": "^4.3.0",
+    "mkdirp": "^1.0.4",
+    "rimraf": "^3.0.2",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.5",
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.2",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.43.0"
+  }
+}
