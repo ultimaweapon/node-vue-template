@@ -13,24 +13,13 @@ config.output.path = path.resolve(output);
 
 webpack(config, (err, stats) => {
   if (err) {
-    console.error(err.stack || err);
-    if (err.details) {
-      console.error(err.details);
-    }
+    console.error(err);
     process.exit(1);
   }
 
-  const info = stats.toJson();
+  console.log(stats.toString({ chunks: false, colors: true }));
 
   if (stats.hasErrors()) {
-    console.error(info.errors);
-  }
-
-  if (stats.hasWarnings()) {
-    console.warn(info.warnings);
-  }
-
-  if (stats.hasErrors() || stats.hasWarnings()) {
     process.exit(1);
   }
 });
