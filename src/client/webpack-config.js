@@ -5,8 +5,12 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
+const production = (process.env.NODE_ENV === 'production');
+
+// FIXME: Enable source map for sass. The problem right now is it will not work if "devtool" is "eval".
+// But if we use the other values the source map for SFC will not work.
 module.exports = {
-  mode: 'production',
+  mode: production ? 'production' : 'development',
   entry: path.resolve(__dirname, 'index.ts'),
   output: {
     filename: path.join('js', '[contenthash].js'),
@@ -61,8 +65,8 @@ module.exports = {
     new VueLoaderPlugin()
   ],
   optimization: {
-    minimize: true,
-    minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin()],
+    minimize: production,
+    minimizer: production ? [new TerserPlugin(), new OptimizeCSSAssetsPlugin()] : [],
     runtimeChunk: 'single',
     moduleIds: 'hashed',
     splitChunks: {
@@ -74,5 +78,6 @@ module.exports = {
         }
       }
     }
-  }
+  },
+  devtool: production ? false : 'eval-source-map'
 };
