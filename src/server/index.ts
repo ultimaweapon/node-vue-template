@@ -1,10 +1,16 @@
-import { resolve } from 'path';
+import path = require('path');
 import express = require('express');
 
+const port = process.env.PORT || 3000;
+const production = (process.env.NODE_ENV === 'production');
 const app = express();
 
-app.use(express.static(resolve(__dirname, 'public')));
+// serve client files if we are in development mode
+if (!production) {
+  const assets = path.resolve(__dirname, 'public');
+  app.use(express.static(assets, { etag: false }));
+}
 
-app.listen(3000, () => {
-  console.log('Server listening on http://localhost:3000.');
+app.listen(port, () => {
+  console.log(`server listening on http://localhost:${port}`);
 });

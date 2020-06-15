@@ -18,6 +18,7 @@ webpack(config, (err, stats) => {
   }
 
   console.log(stats.toString({ chunks: false, colors: true }));
+  console.log();
 
   if (stats.hasErrors()) {
     process.exit(1);
