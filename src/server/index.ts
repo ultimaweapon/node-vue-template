@@ -1,12 +1,15 @@
 import path = require('path');
 import express = require('express');
+import { isProduction } from './app-config';
+import { configure as configureRoutes } from './routing';
 
 const port = process.env.PORT || 3000;
-const production = (process.env.NODE_ENV === 'production');
 const app = express();
 
+configureRoutes(app);
+
 // serve client files if we are in development mode
-if (!production) {
+if (!isProduction()) {
   const assets = path.resolve(__dirname, 'public');
   app.use(express.static(assets, { etag: false }));
 }

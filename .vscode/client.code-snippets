@@ -1,0 +1,72 @@
+{
+  "storeAction": {
+    "scope": "typescript",
+    "prefix": "sa",
+    "description": "Create a new action for store",
+    "body": [
+      "[Action.$1]: async function (context: Context) {",
+      "  $0",
+      "}"
+    ]
+  },
+  "storeActionWithPayload": {
+    "scope": "typescript",
+    "prefix": "sap",
+    "description": "Create a new action with payload for store",
+    "body": [
+      "[Action.$1]: async function (context: Context, payload: $1) {",
+      "  $0",
+      "}"
+    ]
+  },
+  "storeGetter": {
+    "scope": "typescript",
+    "prefix": "sg",
+    "description": "Create a new getter for store",
+    "body": [
+      "[Getter.$1]: function (state: State) {",
+      "  $0",
+      "}"
+    ]
+  },
+  "storeKey": {
+    "scope": "typescript",
+    "prefix": "sk",
+    "description": "Create a new enum key for store",
+    "body": "${1/(.*)/${1:/capitalize}/} = '$1'",
+  },
+  "storeMutation": {
+    "scope": "typescript",
+    "prefix": "sm",
+    "description": "Create a new mutation for store",
+    "body": [
+      "[Mutation.$1]: function (state: State, payload: $1) {",
+      "  $0",
+      "}"
+    ]
+  },
+  "storePayloadAction": {
+    "scope": "typescript",
+    "prefix": "spa",
+    "description": "Create a new payload class for a store action",
+    "body": [
+      "export class $1 extends Payload {",
+      "  constructor(source: Source$2) {",
+      "    super(key(Action.$1), source);",
+      "  }",
+      "}"
+    ]
+  },
+  "storePayloadMutation": {
+    "scope": "typescript",
+    "prefix": "spm",
+    "description": "Create a new payload class for a store mutation",
+    "body": [
+      "export class $1 extends Payload {",
+      "  constructor(source: Source$2) {",
+      "    super(key(Mutation.$1), source);",
+      "  }",
+      "}"
+    ]
+  },
+}

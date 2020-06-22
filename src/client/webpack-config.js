@@ -18,8 +18,10 @@ module.exports = {
   },
   resolve: {
     alias: {
+      '@': [__dirname, path.resolve(__dirname, '..', 'commons')],
       vue$: 'vue/dist/vue.runtime.esm.js'
-    }
+    },
+    extensions: ['.wasm', '.mjs', '.ts', '.js', '.json']
   },
   module: {
     rules: [
@@ -68,7 +70,7 @@ module.exports = {
     minimize: production,
     minimizer: production ? [new TerserPlugin(), new OptimizeCSSAssetsPlugin()] : [],
     runtimeChunk: 'single',
-    moduleIds: 'hashed',
+    moduleIds: 'deterministic',
     splitChunks: {
       cacheGroups: {
         vendor: {

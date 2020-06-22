@@ -1,20 +1,26 @@
 import './index.scss';
 
 async function load() {
-  const imports = await Promise.all([
-    import('portal-vue'),
-    import('vue'),
-    import('./app.vue')
-  ]);
-
-  const { default: PortalVue } = imports[0];
-  const { default: Vue } = imports[1];
-  const { default: App } = imports[2];
+  const { default: PortalVue } = await import('portal-vue');
+  const { default: Vue } = await import('vue');
+  const { default: Vuex } = await import('vuex');
+  const { default: App } = await import('./app.vue');
+  const { createStore } = await import('./store');
+  const messagePublisher = await import('./store-plugins/message-publisher');
 
   Vue.use(PortalVue);
+  Vue.use(Vuex);
+
+  const modules = {
+  };
+
+  const plugins = [
+    messagePublisher.create
+  ];
 
   new Vue({
     el: '#app',
+    store: createStore(modules, plugins),
     render: h => h(App)
   });
 }

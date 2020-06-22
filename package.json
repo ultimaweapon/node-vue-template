@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "rimraf dist && mkdirp dist/public && node src/client/build.js dist/public && tsc --project src/server --outDir dist",
+    "prebuild": "rimraf build dist && mkdirp build dist/public",
+    "build": "node src/client/build.js dist/public && tsc --project src/server --outDir build",
+    "postbuild": "merge-dirs build/server dist && merge-dirs build/commons dist",
     "start": "npm run build && node dist/index.js"
   },
   "dependencies": {
@@ -15,6 +17,7 @@
     "bootstrap-vue": "^2.15.0",
     "css-loader": "^3.5.3",
     "html-webpack-plugin": "^4.3.0",
+    "merge-dirs": "^0.2.1",
     "mini-css-extract-plugin": "^0.9.0",
     "mkdirp": "^1.0.4",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
@@ -30,6 +33,7 @@
     "vue-functional-data-merge": "^3.1.0",
     "vue-loader": "^15.9.2",
     "vue-template-compiler": "^2.6.11",
-    "webpack": "^4.43.0"
+    "vuex": "^3.4.0",
+    "webpack": "^5.0.0-beta.18"
   }
 }

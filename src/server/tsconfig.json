@@ -3,6 +3,10 @@
   "compilerOptions": {
     "target": "ES2019",
     "module": "CommonJS",
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "rootDirs": [
+      ".",
+      "../commons"
+    ]
   }
 }

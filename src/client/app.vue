@@ -8,9 +8,9 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  data: function () {
-    return {
-      message: 'Hello, world!'
+  computed: {
+    message() {
+      return this.$store.state.message;
     }
   }
 });
