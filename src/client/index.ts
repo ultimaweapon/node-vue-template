@@ -4,7 +4,7 @@ async function load() {
   const { default: PortalVue } = await import('portal-vue');
   const { default: Vue } = await import('vue');
   const { default: Vuex } = await import('vuex');
-  const { default: App } = await import('./app.vue');
+  const { default: App } = await import('./index.vue');
   const { createStore } = await import('./store');
   const messagePublisher = await import('./store-plugins/message-publisher');
 
