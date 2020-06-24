@@ -16,7 +16,7 @@ This is a template for creating a SPA with Vue.js as a front-end and Node.js as 
 - Shipped with configurations for Visual Studio Code for building and debugging both front-end and back-end out of the box.
 - Code snipped for Visual Studio Code for scaffolding the repetitive tasks.
 
-## Web Browser requirements
+## Web browser requirements
 
 - Full ES2015 (ES6) supports.
 - Fetch API supports.
@@ -38,3 +38,19 @@ git remote set-url origin URL
 ```
 
 Now you are ready to go.
+
+## Getting started on development
+
+To build and start a development server, run:
+
+```sh
+npm start
+```
+
+To build only, run:
+
+```sh
+npm run build
+```
+
+You can also build and debugging from Visual Studio Code. To build only, select `Run Build Task...` from `Terminal` menu. To build and start debugging, select `Start Debugging` from `Run` menu.
