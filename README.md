@@ -41,16 +41,25 @@ Now you are ready to go.
 
 ## Getting started on development
 
-To build and start a development server, run:
-
-```sh
-npm start
-```
-
-To build only, run:
+To build from a command line, run:
 
 ```sh
 npm run build
 ```
 
-You can also build and debugging from Visual Studio Code. To build only, select `Run Build Task...` from `Terminal` menu. To build and start debugging, select `Start Debugging` from `Run` menu.
+Once build is completed you can start a server by:
+
+```sh
+npm start
+```
+
+You can also build and debugging from Visual Studio Code. To build, select `Run Build Task...` from `Terminal` menu. To start debugging, select `Start Debugging` from `Run` menu.
+
+## Deploy to production
+
+The build process is in development mode by default. To build for a production you need to set `NODE_ENV` environment variable with value `production`. The server is also running in development mode by default too, which also using the same `NODE_ENV` to control which mode to run. The following will applied on production mode:
+
+- Assets for the client get minified.
+- No source map is generated for the client assets.
+- Vue.js is in production mode so Vue Devtools will not work.
+- The server will no longer serve the assets for the client. You need to use the other softwares for this job (e.g. NGINX).
