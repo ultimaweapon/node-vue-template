@@ -9,6 +9,9 @@
     "postbuild": "node build/publish.js lib src",
     "start": "node lib/main.js"
   },
+  "files": [
+    "/lib/"
+  ],
   "dependencies": {
     "express": "^4.17.1"
   },
