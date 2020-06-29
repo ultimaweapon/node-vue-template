@@ -55,6 +55,28 @@ npm start
 
 You can also build and debugging from Visual Studio Code. To build, select `Run Build Task...` from `Terminal` menu. To start debugging, select `Start Debugging` from `Run` menu.
 
+## Create a tarball for deployment
+
+You can run the following command to create a distribution tarball:
+
+```sh
+npm pack
+```
+
+This will produce a `PACKAGE_NAME-PACKAGE_VERSION.tgz` in the project directory. It will include only required files to run the application (e.g. `lib` but not `src`). Please note the above command will not trigger the build processes so you need to build the project before you run it.
+
+Before you can start the application that distributed with this method you need to run the following command in the extracted directory:
+
+```sh
+npm install
+```
+
+Now you can start the application with:
+
+```sh
+npm start
+```
+
 ## Deploy to production
 
 The build process is in development mode by default. To build for a production you need to set `NODE_ENV` environment variable with value `production`. The server is also running in development mode by default too, which also using the same `NODE_ENV` to control which mode to run. The following will applied on production mode:
@@ -63,3 +85,4 @@ The build process is in development mode by default. To build for a production y
 - No source map is generated for the client assets.
 - Vue.js is in production mode so Vue Devtools will not work.
 - The server will no longer serve the assets for the client. You need to use the other softwares for this job (e.g. NGINX).
+- `npm install` will not install development dependencies.
