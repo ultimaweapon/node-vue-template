@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "prebuild": "rimraf build dist && mkdirp build dist/public",
-    "build": "node src/client/build.js dist/public && tsc --project src/server --outDir build",
-    "postbuild": "merge-dirs build/server dist && merge-dirs build/commons dist",
-    "start": "npm run build && node dist/index.js"
+    "clean": "rimraf build/outputs lib",
+    "prebuild": "npm run clean && mkdirp build/outputs lib/public",
+    "build": "node src/client/build.js lib/public && tsc --project src/server --outDir build/outputs",
+    "postbuild": "node build/publish.js lib src",
+    "start": "node lib/main.js"
   },
   "dependencies": {
     "express": "^4.17.1"
@@ -18,6 +19,7 @@
     "bootstrap-vue": "^2.15.0",
     "connect-history-api-fallback": "^1.6.0",
     "css-loader": "^3.5.3",
+    "glob": "^7.1.6",
     "html-webpack-plugin": "^4.3.0",
     "merge-dirs": "^0.2.1",
     "mini-css-extract-plugin": "^0.9.0",

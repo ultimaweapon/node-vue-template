@@ -11,6 +11,13 @@
       "problemMatcher": [],
       "label": "build",
       "detail": "Build both client and server."
+    },
+    {
+      "type": "npm",
+      "script": "clean",
+      "problemMatcher": [],
+      "label": "clean",
+      "detail": "Remove all compiled files."
     }
   ]
 }

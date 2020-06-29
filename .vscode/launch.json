@@ -5,8 +5,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Server",
-      "program": "${workspaceFolder}/dist/index.js",
-      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/lib/main.js",
       "skipFiles": [
         "<node_internals>/**"
       ],
