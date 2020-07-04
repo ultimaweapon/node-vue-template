@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rimraf build/outputs lib",
     "prebuild": "npm run clean && mkdirp build/outputs lib/public",
-    "build": "node src/client/build.js lib/public && tsc --project src/server --outDir build/outputs",
+    "build": "webpack --config src/client/webpack-config.js --output-path lib/public && tsc --project src/server --outDir build/outputs",
     "postbuild": "node build/publish.js lib src",
     "start": "node lib/main.js"
   },
@@ -42,6 +42,7 @@
     "vue-router": "^3.3.4",
     "vue-template-compiler": "^2.6.11",
     "vuex": "^3.4.0",
-    "webpack": "^5.0.0-beta.18"
+    "webpack": "^5.0.0-beta.18",
+    "webpack-cli": "^3.3.12"
   }
 }
