@@ -1,10 +1,10 @@
 import { MutationPayload, Store } from 'vuex';
-import server from '@/services/server-rest';
+import { rest } from '@/client';
 import { AddErrors, LoadMessage, Message, Mutation, Source, State } from '@/store';
 
 function messageChanged(payload: Message, state: State) {
   if (payload.source !== Source.Server) {
-    server.updateMessage(state.message);
+    rest.updateMessage(state.message);
   }
 }
 

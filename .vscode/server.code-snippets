@@ -1,0 +1,12 @@
+{
+	"httpHandler": {
+		"scope": "typescript",
+		"prefix": "hh",
+		"description": "Create a new HTTP handler",
+		"body": [
+			"export function $1(req: Request<{$2}, any, Partial<$3> | undefined, Partial<{$4}>>, res: Response<$5>) {",
+			"  $0",
+			"}"
+		]
+	}
+}

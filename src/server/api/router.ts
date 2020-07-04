@@ -5,6 +5,7 @@ export function create(): IRouter {
   const router = Router();
 
   router.get('/message', message.get);
+  router.put('/message', message.put);
 
   return router;
 }

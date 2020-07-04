@@ -6,6 +6,8 @@ import { configure as configureRoutes } from './routing';
 const port = process.env.PORT || 3000;
 const app = express();
 
+app.use(express.json({ strict: false }));
+
 configureRoutes(app);
 
 // serve client files if we are in development mode
