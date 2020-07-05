@@ -1,9 +1,13 @@
-export interface AppError {
-  message: string;
-  error: Error;
+export interface Alert {
+  readonly message: string;
 }
 
 export interface State {
-  errors: AppError[];
+  alerts: Alert[],
   message: string;
+}
+
+export class ErrorAlert implements Alert {
+  constructor(readonly message: string, readonly error?: Error) {
+  }
 }

@@ -17,7 +17,7 @@ export function createStore(modules: ModuleTree<State>, plugins: Plugin<State>[]
   return new Store({
     state: function () {
       return {
-        errors: [],
+        alerts: [],
         message: 'Loading...'
       };
     },

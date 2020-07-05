@@ -1,22 +1,29 @@
 import { Source, Payload } from './payload';
-import { State } from './state';
+import { Alert, State } from './state';
 import { key } from './util';
 
 export const enum Mutation {
-  AddErrors = 'addErrors',
-  ClearErrors = 'clearErrors',
+  AddAlert = 'addAlert',
+  RemoveAlert = 'removeAlert',
+  ClearAlert = 'clearAlert',
   Message = 'message'
 }
 
-export class AddErrors extends Payload {
-  constructor(source: Source, readonly message: string, readonly error: Error) {
-    super(key(Mutation.AddErrors), source);
+export class AddAlert extends Payload {
+  constructor(source: Source, readonly alert: Alert) {
+    super(key(Mutation.AddAlert), source);
   }
 }
 
-export class ClearErrors extends Payload {
+export class RemoveAlert extends Payload {
+  constructor(source: Source, readonly index: number) {
+    super(key(Mutation.RemoveAlert), source);
+  }
+}
+
+export class ClearAlert extends Payload {
   constructor(source: Source) {
-    super(key(Mutation.ClearErrors), source);
+    super(key(Mutation.ClearAlert), source);
   }
 }
 
@@ -27,11 +34,14 @@ export class Message extends Payload {
 }
 
 export default {
-  [Mutation.AddErrors]: function (state: State, payload: AddErrors) {
-    state.errors.push(payload);
+  [Mutation.AddAlert]: function (state: State, payload: AddAlert) {
+    state.alerts.push(payload.alert);
   },
-  [Mutation.ClearErrors]: function (state: State) {
-    state.errors = [];
+  [Mutation.RemoveAlert]: function (state: State, payload: RemoveAlert) {
+    state.alerts.splice(payload.index, 1);
+  },
+  [Mutation.ClearAlert]: function (state: State) {
+    state.alerts = [];
   },
   [Mutation.Message]: function (state: State, payload: Message) {
     state.message = payload.data;

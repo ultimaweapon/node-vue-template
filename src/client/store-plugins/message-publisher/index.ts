@@ -1,6 +1,6 @@
 import { MutationPayload, Store } from 'vuex';
 import { rest } from '@/client';
-import { AddErrors, LoadMessage, Message, Mutation, Source, State } from '@/store';
+import { AddAlert, ErrorAlert, LoadMessage, Message, Mutation, Source, State } from '@/store';
 
 function messageChanged(payload: Message, state: State) {
   if (payload.source !== Source.Server) {
@@ -18,6 +18,7 @@ export function create(store: Store<State>) {
   store.dispatch(new LoadMessage(Source.App)).then(() => {
     store.subscribe(mutationListener);
   }, err => {
-    store.commit(new AddErrors(Source.App, 'Failed to load a message from the server.', err));
+    const alert = new ErrorAlert('Failed to load a message from the server.', err);
+    store.commit(new AddAlert(Source.App, alert));
   });
 }
