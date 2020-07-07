@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { GetMessageResponse, UpdateMessageRequest } from '../../messages';
+import { GetMessageResponse, UpdateMessageRequest } from '@/messages';
 
 export function get(req: Request<{}, any, Partial<any> | undefined, Partial<{}>>, res: Response<GetMessageResponse>) {
   res.json('Hello, world!');

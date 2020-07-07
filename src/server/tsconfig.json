@@ -4,6 +4,10 @@
     "target": "ES2019",
     "module": "CommonJS",
     "moduleResolution": "Node",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*", "../commons/*"]
+    },
     "rootDirs": [
       ".",
       "../commons"
