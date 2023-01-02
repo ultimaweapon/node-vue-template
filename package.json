@@ -28,7 +28,7 @@
     "merge-dirs": "^0.2.1",
     "mini-css-extract-plugin": "^2.7.2",
     "mkdirp": "^1.0.4",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "optimize-css-assets-webpack-plugin": "^6.0.1",
     "popper.js": "^1.16.1",
     "portal-vue": "^2.1.7",
     "rimraf": "^3.0.2",
